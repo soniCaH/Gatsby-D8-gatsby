@@ -27,6 +27,9 @@ const RecipeCard = (props) => {
         }
       })()}
        </span>
+        {props.category.map(function(element, i) {
+          return <span className="icon"> / {element.name}</span>;
+        })}
       </p>
       <p dangerouslySetInnerHTML={{ __html: props.summary }}></p>
     </Card>

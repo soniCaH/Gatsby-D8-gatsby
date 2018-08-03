@@ -22,6 +22,7 @@ const RecipesPage = ({ data }) => (
           cookTime={node.field_cooking_time}
           difficulty={node.field_difficulty}
           summary={node.field_summary.value}
+          category={node.relationships.field_recipe_category}
         />
       ))}
     </RecipeCardList>
@@ -47,6 +48,9 @@ export const query = graphql`
           relationships {
             field_image {
               url
+            }
+            field_recipe_category {
+              name
             }
           }
           path {

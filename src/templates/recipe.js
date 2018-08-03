@@ -27,6 +27,8 @@ const RecipeTemplate = ({data}) => {
         ingredients={field_ingredients}
         instructions={field_recipe_instruction.value}
         summary={field_summary.value}
+        category={relationships.field_recipe_category}
+        tags={relationships.field_tags}
       />
     </Layout>
   )
@@ -54,6 +56,12 @@ export const query = graphql`
       relationships {
         field_image {
           url
+        }
+        field_recipe_category {
+          name
+        }
+        field_tags {
+          name
         }
       }
     }
