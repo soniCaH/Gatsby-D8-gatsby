@@ -14,18 +14,18 @@ const Recipe = (props) => {
       </figure>
       <h3><a href={ props.alias }>{ props.title }</a></h3>
       <p className="icon-list">
-        <i className="icon icon--prepTime">⏱</i> Preparation time: {props.prepTime}'
-        <i className="icon icon--cookTime">‍👨🏻‍🍳</i> Cooking time: {props.cookTime}'
-        <i className="icon icon--difficulty">
+        <span className="icon icon--prepTime" role="img" aria-label="Preparation time">⏱</span> Preparation time: {props.prepTime}'
+        <span className="icon icon--cookTime" role="img" aria-label="Cooking time">‍👨🏻‍🍳</span> Cooking time: {props.cookTime}'
+        <span className="icon icon--difficulty" role="img" aria-label="Difficulty">
         {(() => {
         switch (props.difficulty) {
           case "easy":   return "★☆☆";
           case "medium": return "★★☆";
           case "hard":
-          default:       return "★★★";;
+          default:       return "★★★";
         }
       })()}
-        </i>
+        </span>
       </p>
       <p dangerouslySetInnerHTML={{ __html: props.summary }}></p>
       <div>

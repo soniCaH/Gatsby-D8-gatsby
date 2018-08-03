@@ -4,12 +4,12 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
- // You can delete this file if you're not using it
+// You can delete this file if you're not using it
 
 const path = require(`path`)
 
-exports.createPages = ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators;
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions
 
   const loadRecipes = new Promise((resolve, reject) => {
     graphql(`
@@ -24,9 +24,8 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           }
         }
       }
-    `
-    ).then(result => {
-        result.data.allNodeRecipe.edges.map(({ node }) => {
+    `).then(result => {
+      result.data.allNodeRecipe.edges.map(({ node }) => {
         createPage({
           path: `${node.path.alias}/`,
           component: path.resolve(`./src/templates/recipe.js`),
@@ -40,4 +39,4 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
   })
 
   return Promise.all([loadRecipes])
-};
+}

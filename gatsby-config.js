@@ -12,6 +12,6 @@ module.exports = {
         baseUrl: 'http://dev.gatsby.d8/',
         apiBase: 'jsonapi',
       },
-    }
+    },
   ],
 }

@@ -1,11 +1,11 @@
 import React from 'react'
-import find from 'lodash/find'
+import { graphql } from 'gatsby'
+import Layout from '../components/layout';
 import Recipe from '../components/Recipe';
 
 const RecipeTemplate = ({data}) => {
 
   const {
-    id,
     title,
     field_preparation_time,
     field_cooking_time,
@@ -17,16 +17,18 @@ const RecipeTemplate = ({data}) => {
   } = data.nodeRecipe;
 
   return(
-    <Recipe
-      imageUrl={relationships.field_image.url}
-      title={title}
-      prepTime={field_preparation_time}
-      cookTime={field_cooking_time}
-      difficulty={field_difficulty}
-      ingredients={field_ingredients}
-      instructions={field_recipe_instruction.value}
-      summary={field_summary.value}
-    />
+    <Layout>
+      <Recipe
+        imageUrl={relationships.field_image.url}
+        title={title}
+        prepTime={field_preparation_time}
+        cookTime={field_cooking_time}
+        difficulty={field_difficulty}
+        ingredients={field_ingredients}
+        instructions={field_recipe_instruction.value}
+        summary={field_summary.value}
+      />
+    </Layout>
   )
 }
 

@@ -1,14 +1,18 @@
 import React from 'react'
-import Link from 'gatsby-link'
-import RecipeCardList from '../components/RecipeCardList';
-import RecipeCard from '../components/RecipeCard';
+
+import { graphql } from 'gatsby'
+
+import Layout from '../components/layout'
+
+import RecipeCardList from '../components/RecipeCardList'
+import RecipeCard from '../components/RecipeCard'
 
 const RecipesPage = ({ data }) => (
-  <section>
-  <h1>All recipes</h1>
+  <Layout>
+    <h1>All Recipes</h1>
+
     <RecipeCardList>
-      
-      { data.allNodeRecipe.edges.map(( { node }) => (
+      {data.allNodeRecipe.edges.map(({ node }) => (
         <RecipeCard
           key={node.id}
           imageUrl={node.relationships.field_image.url}
@@ -20,8 +24,8 @@ const RecipesPage = ({ data }) => (
           summary={node.field_summary.value}
         />
       ))}
-      </RecipeCardList>
-    </section>
+    </RecipeCardList>
+  </Layout>
 )
 
 export default RecipesPage
