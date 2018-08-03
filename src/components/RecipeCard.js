@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 import Config from '../../gatsby-config'
 
 const Card = styled.article`
@@ -13,7 +14,7 @@ const RecipeCard = (props) => {
       <figure>
         <img src={ Config.siteMetadata.apiUrl + props.imageUrl } alt={ props.title } />
       </figure>
-      <h3><a href={ props.alias }>{ props.title }</a></h3>
+      <h3><Link to={ props.alias }>{ props.title }</Link></h3>
       <p className="icon-list">
         <span className="icon icon--prepTime" role="img" aria-label="Preparation time">⏱</span> {props.prepTime}'
         <span className="icon icon--cookTime" role="img" aria-label="Cooking time">‍👨🏻‍🍳</span> {props.cookTime}'
